@@ -3,6 +3,8 @@ services:
     image: nickfedor/watchtower
     environment:
       - WATCHTOWER_POLL_INTERVAL=60
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_CLEANUP=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtower
@@ -12,3 +14,5 @@ services:
     ports:
       - 8080:8080
     container_name: express-app
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
